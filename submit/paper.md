@@ -1,6 +1,6 @@
 ---
 title: "GitJournal: 基於 git 的期刊出版新模式"
-date: "2019 年 6 月 5 日"
+date: "June/05/2019"
 author:
   - name: 陳鍾誠
     department: 國立金門大學資訊工程系
