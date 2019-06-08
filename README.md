@@ -4,7 +4,7 @@
 
 以下是一篇建置完成的論文網址，我們採用《學術風格》的編排方式》。
 
-* https://git-journal.github.io/OpenSource/submit/paper.html
+* https://git-journal.github.io/OpenSource/001/01.html
 
 當稿件被接受之後，本期刊會 fork 你投稿的 github 專案到《本期刊的 organization 中》，以便讓讀者可以重複您的論文實驗，進行驗證或進一步延伸開發。
 
