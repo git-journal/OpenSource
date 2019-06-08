@@ -37,7 +37,22 @@ header {
 
 .author {
   padding: 10px 30px;
-  line-height: 240%;
+  
+/*line-height: 240%;  display: table;
+  table-layout: fixed;*/
+  margin: 0 auto;
+}
+
+.author div {
+  padding: 10px;
+  /*
+  display: table-cell;
+  min-width: 250px;
+  */
+}
+
+.author p {
+  line-height: 100%;
 }
 
 .abstract {
@@ -52,8 +67,7 @@ header {
 }
 
 .citation {
-  vertical-align: sub;
-  font-size: smaller;
+  /* font-style: italic; */
 }
 
 .journal {

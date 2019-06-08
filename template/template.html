@@ -45,7 +45,7 @@ $endfor$
 $for(include-before)$
 $include-before$
 $endfor$
-<div class="journal"><label>Git 開源期刊 / 第 1 卷 / 第 1 期</label><label style="float:right">網址：$url$</label></div>
+<div class="journal"><label>Git 開源期刊 / 第 n 卷 / 第 m 期</label><label style="float:right">專案網址：<a href="$url$">$url$</a></a></label></div>
 $if(title)$
 <header id="title-block-header">
 <h1 class="title">$title$</h1>
@@ -55,11 +55,11 @@ $endif$
 $if(author)$
 <div class="author">
   $for(author)$
-  <span>
-    $author.name$<br>
-    $author.department$<br>
-    $author.email$<br>
-  </span>
+  <div>
+    <p>$author.name$</p>
+    <p>$author.department$</p>
+    <p>$author.email$</p>
+  </div>
   $endfor$
 </div>
 $endif$

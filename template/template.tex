@@ -11,7 +11,20 @@
 \usepackage{amsfonts}       % blackboard math symbols
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
 \usepackage{microtype}      % microtypography
-\usepackage{lipsum}
+% \usepackage{lipsum} 產生隨機文章，沒用！
+
+% 設定 CJK 中文字體
+$if(CJKmainfont)$
+  \ifxetex
+    \usepackage{xeCJK}
+    \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
+  \fi
+$endif$
+
+% 設定 highlighting 套件
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -25,8 +38,8 @@ $if(author)$
   $for(author)$
     $author.name$ \\
     $author.department$ \\
-    \texttt{$author.email$} \\
-    \And
+    \texttt{$author.email$}
+    \and
   $endfor$
 }
 $endif$
