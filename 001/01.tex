@@ -1,0 +1,153 @@
+\documentclass{article}
+
+
+\usepackage{../template/template}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\title{GitJournal: 基於 git 的期刊出版新模式}
+
+\author{
+      陳鍾誠 \\
+    國立金門大學資訊工程系 \\
+    \texttt{ccc@nqu.edu.tw} \\
+    \And
+  }
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  本文提出一種基於 git 的學術投稿、期刊審查方法，該方法透過像 github
+  這樣的網路平台，讓投稿者與期刊之間能夠更順暢運作，也讓除了論文以外的學術資源，像是《原始碼、資料、還有測試工具》等資源，能夠更有效地公開並接受檢驗。
+\end{abstract}
+
+% keywords can be removed
+\keywords{
+   Git \and  Github \and  Markdown \and  Latex \and  出版 \and 
+}
+
+\hypertarget{ux7c21ux4ecb}{%
+\section{簡介}\label{ux7c21ux4ecb}}
+
+傳統學術運作方法是基於《紙本》的生態圈，採用《期刊-投稿》的方式進行。但是在網路與
+web
+技術開始改變各種領域的運作方式之後，這樣的模式就顯現出一些缺點，例如：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  學術研究背後的《資料、程式、還有實驗工具》等通常不容易公開，研究者很難檢驗該方法的效果並進一步改良。
+\item
+  期刊出版商的權力過大，並且透過壟斷論文商業權來營利，未付費的使用者通常無法閱讀這些研究論文。
+\item
+  投稿的過程冗長，導致學術研究沒辦法及時有效的出版，這對學術的發展有不利的影響。
+\end{enumerate}
+
+為了改進這些缺點，本文提出一種基於 git
+專案的新型學術出版模式，這種模式透過像 git 的 push, pull, merge
+機制，以及像 github 這樣的 git 平台之 fork, organization, gh-pages
+等機制，建立一個《學術出版的新流程》，以下我們將描述這個流程的運作方法，並且提供一組讓這個流程可以有效運作的工具。
+
+由於這個《新流程》是運作在像 github
+這個平台上的，為了能夠清楚闡述這個流程，我們首先回顧一下 github
+在程式社群上的運作方法。
+
+\hypertarget{git-github-ux8207ux7a0bux5f0fux793eux7fa4ux7684ux904bux4f5cux65b9ux6cd5}{%
+\section{Git, Github
+與程式社群的運作方法}\label{git-github-ux8207ux7a0bux5f0fux793eux7fa4ux7684ux904bux4f5cux65b9ux6cd5}}
+
+在《網路興起與開放原始碼》兩者的結合之下，程式社群開始有了《透過網路管理並交流程式》的強大需求，於是各種《程式碼管理工具》被設計了出來，從早期的
+RCS, CVS, SVN 集中式版本管理工具，到較新的 Mercurial 與 Git
+等分散型版本管理工具，都是為了讓《程式碼能被有效管理》而設計的。
+
+舉例而言，《git
+版本管理系統》通常會記錄《每個檔案的各個歷史版本》，能夠讓程式開發者有效的協作，透過
+clone
+指令複製最新版本之後，就能進行修改與進一步開發，等到一個新版本開發完成之後，就能透過
+add, commit, push
+等指令將新版程式推回《版本管理系統》中，讓其他人可以取得新版本後進一步測試開發。
+
+如果新版程式開發失敗，或者新方法不能達到預期結果，那麼也可以放棄新版，透過
+checkout
+回復到舊版本去，這樣就能夠有效的管理程式碼，並且逐步的改進程式專案。
+
+在 Linus Tovalds 設計出 git 版本管理系統之後，很多程式設計者就開始利用
+git 管理程式碼，但是《程式碼公開交流》的問題只靠 git
+是不夠的，還需要有《網站與社群》的支持功能， github
+的出現進一步促進的《程式碼的大規模公開交流》現象，讓《開放原始碼的社群》能夠更有效的交流運作。
+
+Github 提供了 fork 與 pull request
+機制，讓想要改進程式的人可以在不干擾原作者的情況之下，複製出另一份專案，然後開始修改，等到程式改進完畢，又可以透過
+pull request
+機制請求原作者將該改進功能合併回原專案中，這樣的機制可以促進程式領域的良性交流，這種作法又稱為《社交式編程》。
+
+另外、在 github 上還可以對專案按下 Star 與
+Watch，這可以讓程式開發者知道那些專案比較受人關注，這些功能都進一步促進了《開放原始碼》的交流行為。
+
+有了上述理解之後，我們就可以詳細描述本文所要提出的《基於 git
+的科學出版模式》了！
+
+\hypertarget{ux57faux65bc-git-ux7684ux5b78ux8853ux51faux7248ux65b9ux6cd5}{%
+\section{基於 git
+的學術出版方法}\label{ux57faux65bc-git-ux7684ux5b78ux8853ux51faux7248ux65b9ux6cd5}}
+
+首先讓我們看這個《git 出版模式》中，期刊出版者的運作流程。
+
+期刊出版者首先創建一個 github 專案後，將《投稿規格檔》(通常是一個 latex
+樣板)
+放上該專案，裡面還附上一些專案相關資源的資料夾規劃，以及對應的出版工具程式等等。
+
+投稿者可以 fork
+該期刊的專案，然後將論文內容放入對應的檔案中，並且檢視看看論文的呈現有沒有錯誤，確認論文完成無誤之後，就可以發送
+pull requrest 讓出版商來審查並收件。
+
+除了論文之外，投稿者也可以一併附上《研究的資料、程式與工具》等等資源，放入專案當中！
+
+期刊出版者收到該 pull request
+之後，可以啟動審查機制，並發送邀請給審查者，審查者核可之後，期刊出版者就可以接受
+pull request 完成投稿程序。
+
+然後期刊出版者就能編輯、排版、並進行刊登，不管是要發行電子版或紙本都行。
+
+\hypertarget{ux904bux4f5cux6d41ux7a0b-ux4ee5git-ux958bux6e90ux671fux520aux70baux4f8b}{%
+\section{運作流程 -- 以《Git
+開源期刊》為例}\label{ux904bux4f5cux6d41ux7a0b-ux4ee5git-ux958bux6e90ux671fux520aux70baux4f8b}}
+
+期刊出版者收到該 pull request
+之後，可以啟動審查機制，並發送邀請給審查者，審查者核可之後，期刊出版者就可以接受
+pull request 完成投稿程序。
+
+然後期刊出版者就能編輯、排版、並進行刊登，不管是要發行電子版或紙本都行
+
+在 陳鍾誠 (2014) 中提出了一套 \ldots{} 方法
+
+(陳鍾誠 2014).
+
+\[
+\int_0^{\infty} f(x) dx
+\]
+
+\hypertarget{ux53c3ux8003ux6587ux737b}{%
+\section*{參考文獻}\label{ux53c3ux8003ux6587ux737b}}
+\addcontentsline{toc}{section}{參考文獻}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-ccc2019}{}%
+陳鍾誠. 2014. ``Github 的使用方法.'' In \emph{網路個人出版學}, 417--22.
+Github.
+
+
+\end{document}
