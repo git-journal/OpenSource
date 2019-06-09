@@ -4,8 +4,8 @@
 
 以下是一篇建置完成的論文網址，我們採用《學術風格》的編排方式。
 
-* https://ccckmit.github.io/git-journal/submit/paper.html
-* https://ccckmit.github.io/git-journal/submit/paper.pdf
+* https://git-journal.github.io/OpenSource/submit/GitJournal.html
+* https://git-journal.github.io/OpenSource/submit/GitJournal.pdf
 
 
 # 安裝相關軟體

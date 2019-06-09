@@ -13,9 +13,10 @@ $endif$
 $if(keywords)$
   <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
 $endif$
-$if(pagetitle)$
-  <title>$if(title-prefix)$$title-prefix$ ??$endif$$pagetitle$</title>
+$if(title)$
+  <title>$title$</title>
 $endif$
+  <!--<title>$if(title-prefix)$$title-prefix$ ??$endif$$pagetitle$</title>-->
   <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
