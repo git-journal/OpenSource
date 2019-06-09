@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="$lang$" xml:lang="$lang$"$if(dir)$ dir="$dir$"$endif$>
 <head>
   <meta charset="utf-8" />
@@ -89,11 +89,9 @@ $if(abstract)$
   $abstract$
 </div>
 $endif$
-$if(keywords)$
 <p class="keyword"><em>Keywords:</em> &nbsp;
   $for(keyword)$ $keyword$ , $endfor$
 </p>
-$endif$
 </header>
 $endif$
 
@@ -108,8 +106,11 @@ $include-after$
 $endfor$
 
 <footer>
-$if(license)$
-License : <a href="$license.url$">$license.name$</a>
+$if(editor)$
+  Editor: <a href="$editor.url$">$editor.name$</a>
+$endif$
+$if(book)$
+  Book：<a href="$book.url$">$book.url$</a>
 $endif$
 </footer>
 </body>

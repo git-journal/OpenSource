@@ -13,9 +13,7 @@ $endif$
 $if(keywords)$
   <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
 $endif$
-$if(pagetitle)$
   <title>$if(title-prefix)$$title-prefix$ ??$endif$$pagetitle$</title>
-$endif$
   <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -44,31 +42,20 @@ $for(header-includes)$
 $endfor$
 </head>
 <body>
-
 $for(include-before)$
 $include-before$
 $endfor$
-
 <div class="journal">
   <label>
-    $if(journal)$
-      <a href="../journal/">$journal.name$</a> / 
-    $endif$
-    $if(book)$
-      <a href="../journal/$book.volume$">$book.volume$</a> / 
-      <a href="../journal/$book.volume$/$book.issue$">$book.issue$</a>
-    $endif$
+    <a href="../journal/">$journal.name$</a>
   </label>
 </div>
-
 $if(title)$
 <header id="title-block-header">
 <h1 class="title">$title$</h1>
-
 $if(subtitle)$
 <p class="subtitle">$subtitle$</p>
 $endif$
-
 $if(author)$
 <div class="author">
   $for(author)$
@@ -89,14 +76,11 @@ $if(abstract)$
   $abstract$
 </div>
 $endif$
-$if(keywords)$
 <p class="keyword"><em>Keywords:</em> &nbsp;
   $for(keyword)$ $keyword$ , $endfor$
 </p>
-$endif$
 </header>
 $endif$
-
 $if(toc)$
 <nav id="$idprefix$TOC" role="doc-toc">
 $table-of-contents$
@@ -108,8 +92,11 @@ $include-after$
 $endfor$
 
 <footer>
-$if(license)$
-License : <a href="$license.url$">$license.name$</a>
+$if(editor)$
+  Editor: <a href="$editor.url$">$editor.name$</a>
+$endif$
+$if(book.url)$
+  Book：<a href="$book.url$">$book.url$</a>
 $endif$
 </footer>
 </body>

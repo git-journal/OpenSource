@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>title</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style>
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" type="text/css" href="../template/template.css">
+</head>
+<body>
+
+
+<div class="journal">
+  <label>
+          <a href="../journal/">開源科學期刊</a> / 
+              <a href="../journal/2019">2019</a> / 
+      <a href="../journal/2019/9">9</a>
+      </label>
+</div>
+
+<header id="title-block-header">
+<h1 class="title">GitJournal: 基於 git 的期刊出版新模式</h1>
+
+
+<div class="author">
+    <div>
+    <p>陳鍾誠</p>
+    <p>國立金門大學資訊工程系</p>
+    <p>ccc@nqu.edu.tw</p>
+  </div>
+  </div>
+<p class="date">June/05/2019</p>
+<div class="abstract">
+  <h3 class="center">Abstract</h3>
+  <p>本文提出一種基於 git 的學術投稿、期刊審查方法，該方法透過像 github 這樣的網路平台，讓投稿者與期刊之間能夠更順暢運作，也讓除了論文以外的學術資源，像是《原始碼、資料、還有測試工具》等資源，能夠更有效地公開並接受檢驗。</p>
+</div>
+</header>
+
+<h2 id="簡介">簡介</h2>
+<p>傳統學術運作方法是基於《紙本》的生態圈，採用《期刊-投稿》的方式進行。但是在網路與 web 技術開始改變各種領域的運作方式之後，這樣的模式就顯現出一些缺點，例如：</p>
+<ol type="1">
+<li>學術研究背後的《資料與程式》等通常不容易公開，研究者很難檢驗該方法的效果並進一步改良。</li>
+<li>期刊出版商的權力過大，並且透過壟斷論文商業權來營利，未付費的使用者通常無法閱讀這些研究論文。</li>
+<li>投稿的過程冗長，導致學術研究沒辦法及時有效的出版，這對學術的發展有不利的影響。</li>
+</ol>
+<p>這些問題讓學術界陷入了困境，我們需要新的做法來解決這些問題！</p>
+<h2 id="方法-採用-github-作為期刊出版平台">方法 – 採用 github 作為期刊出版平台</h2>
+<p>為了改進這些缺點，我們想到可以參考目前 github 專案開發的運作模式，將之運用在論文出版上！</p>
+<p>對於《期刊出版者》，他們可以採用 github 經營期刊，只要將《稿件樣板》與《論文建置工具》放上去，並要求投稿者必須將《稿件、資料、程式》等資源放入一個 github 專案中，然後再進行投稿。</p>
+<p>投稿者將《稿件、資料、程式》一同放入專案中投稿之後，就可以透過 github issue 發訊息給《期刊出版者》，期刊出版者可以透過 issue 與投稿者討論稿件的審查情況，以及《稿件、資料、程式》是否有缺漏之類的問題，直到這些問題都已經釐清或解決之後，就可以決定是否要接受該論文的刊登。</p>
+<p>當《期刊出版者》決定接受該論文刊登時，首先會對該論文的專案進行 fork 動作，這樣就能將論文的《稿件、資料、程式》等實驗環境長久保存，</p>
+<h2 id="技術-使用-pandoc-作為論文出版工具">技術 – 使用 pandoc 作為論文出版工具</h2>
+<p>為了達到上述目的，我們必須設計一組《稿件樣板》與《論文建置工具》，這組工具可以將《稿件原始碼》轉換為《呈現格式》。</p>
+<p>目前的學術領域，最常使用的《原始稿件》格式是 TeX <span class="citation" data-cites="wiki:tex">[1]</span> ，這是由 Donald Knuth 所設計的一種論文格式，排版能力強大，大量的被使用在撰寫論文上，幾乎形成一種論文出版的標準格式，我們可以透過 LaTex, XeLatex, MikTex 等軟體將該格式轉換為 PDF 檔案，然後放上網路或印出為紙本發行。</p>
+<p>但是在程式領域，特別是像 github 這樣的專案分享網站，最常使用的《文件撰寫格式》是 Markdown <span class="citation" data-cites="wiki:markdown">[2]</span>， Markdown 格式經常被用來撰寫程式的說明文件，像是 README.md 等等，其中的附檔名 .md 是 markdown 的簡稱。</p>
+<p>雖然 TeX 格式在學術界比較受歡迎，但是 Markdown 在程式領域卻較為通用，這讓我們很難取捨，到底應該採用哪個做為稿件樣板！</p>
+<p>不過、只要透過工具轉換，我們可以兩者都使用，於是我們找到了 pandoc <span class="citation" data-cites="wiki:pandoc">[3]</span> 這款軟體，該軟體可以對 Markdown, TeX, PDF 等格式進行轉換，於是只要用 Markdown 撰寫，那麼轉換之後將可以同時得到 TeX 格式與 PDF 格式。</p>
+<p>雖然 pandoc 可以轉換 Markdown 為 TeX, 也可以將 TeX 轉回 Markdown，但是由於 Markdown 是一種極為簡單的格式，支援功能遠比 TeX 為少，因此從 TeX 轉回 Markdown 勢必會喪失不少資訊。</p>
+<p>我們根據《簡單易用、轉檔時不漏失資訊、對程式領域通用》這幾個特點，決定採用 Markdown 作為推薦格式。</p>
+<p>但是採用 Markdown 為推薦格式，仍然必須面對《格式與功能都太過簡單》這個問題，例如《原始設計的 Markdown 並不支援表格、也不支援數學式》等等，但是表格和數學式在論文裏都是非常重要的，我們不可能用一種不支援表格與數學式的格式來撰寫論文。</p>
+<p>還好在 Markdown 廣為使用之後，逐漸發展出一些延伸語法 <span class="citation" data-cites="commonmark">[4]</span>，這些語法也逐漸形成了某種標準 (雖然還是有些分歧性)，於是我們可以透過延伸的表格格式，以及從 TeX 借用過來的數學式寫法，為 Markdown 提供《表格與數學式》的功能。</p>
+<p>這些功能在 pandoc 裏都已經被實作並支援了 <span class="citation" data-cites="pandocManual">[5]</span>， pandoc 支援由 github 定義的 markdown 延伸語法 GFM <span class="citation" data-cites="GFM">[6]</span> (該規格支援表格)，以及由 TeX 借用來的數學運算式，還支援用 YAML 這個語法來描述《結構性的描述欄位資訊》，像是《作者的姓名、任職單位、e-mail、完稿時間、摘要、論文關鍵字》等等。</p>
+<p>以下是一份簡易的論文樣版 paper.md，該樣板一開始是 YAML 格式的論文描述資訊，接著是 Markdown 的內文，其中插入了表格、數學式還有圖片。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb1-1" title="1">---</a>
+<a class="sourceLine" id="cb1-2" title="2">title: &quot;一種基於 xxx 的模擬改良方法&quot;</a>
+<a class="sourceLine" id="cb1-3" title="3">date: &quot;June/05/2019&quot;</a>
+<a class="sourceLine" id="cb1-4" title="4">author:</a>
+<a class="sourceLine" id="cb1-5" title="5">  - name: 陳鍾誠</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="bn">    department: 國立金門大學資訊工程系 </span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="bn">    email: ccc@nqu.edu.tw</span></a>
+<a class="sourceLine" id="cb1-8" title="8"></a>
+<a class="sourceLine" id="cb1-9" title="9">  - name: Mitchell John</a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="bn">    department: NASA</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="bn">    email: MitchellJohn@gmail.com</span></a>
+<a class="sourceLine" id="cb1-12" title="12"></a>
+<a class="sourceLine" id="cb1-13" title="13">abstract: |</a>
+<a class="sourceLine" id="cb1-14" title="14">  簡短介紹這篇論文的主要貢獻與使用方法等等，例如：本文提出一種基於 xxx 的方法，</a>
+<a class="sourceLine" id="cb1-15" title="15">  可以在 ooo 的條件下進行 xxx 的模擬 .....</a>
+<a class="sourceLine" id="cb1-16" title="16"></a>
+<a class="sourceLine" id="cb1-17" title="17">keyword: [&quot;xxx&quot;, &quot;ooo&quot;]</a>
+<a class="sourceLine" id="cb1-18" title="18">url: https://github.com/ccckmit/xxx.git</a>
+<a class="sourceLine" id="cb1-19" title="19">---</a>
+<a class="sourceLine" id="cb1-20" title="20"></a>
+<a class="sourceLine" id="cb1-21" title="21"><span class="fu">## 簡介</span></a>
+<a class="sourceLine" id="cb1-22" title="22"></a>
+<a class="sourceLine" id="cb1-23" title="23">在此描述您的作品或研究動機、背景 ...</a>
+<a class="sourceLine" id="cb1-24" title="24"></a>
+<a class="sourceLine" id="cb1-25" title="25"><span class="fu">## 文獻回顧</span></a>
+<a class="sourceLine" id="cb1-26" title="26"></a>
+<a class="sourceLine" id="cb1-27" title="27">介紹一下目前其他人的研究成果並具體舉出文獻，</a>
+<a class="sourceLine" id="cb1-28" title="28"></a>
+<a class="sourceLine" id="cb1-29" title="29">例如 @kour2014fast, @hadash2018estimate 等等， ....</a>
+<a class="sourceLine" id="cb1-30" title="30"></a>
+<a class="sourceLine" id="cb1-31" title="31">接著介紹你的方法有何優勢等等 ...</a>
+<a class="sourceLine" id="cb1-32" title="32"></a>
+<a class="sourceLine" id="cb1-33" title="33"></a>
+<a class="sourceLine" id="cb1-34" title="34"><span class="fu">## 研究方法</span></a>
+<a class="sourceLine" id="cb1-35" title="35"></a>
+<a class="sourceLine" id="cb1-36" title="36">描述您的方法或技術，您也可以使用數學式將您的方法更清楚地描述出來！</a>
+<a class="sourceLine" id="cb1-37" title="37"></a>
+<a class="sourceLine" id="cb1-38" title="38"></a>
+<a class="sourceLine" id="cb1-39" title="39">$$</a>
+<a class="sourceLine" id="cb1-40" title="40">L(X;\theta)=P(X|\theta)=\sum_z P(X,z|\theta) \\</a>
+<a class="sourceLine" id="cb1-41" title="41">\arg\max_{\theta_{t+1}} \frac{\sum_i P(x_i|\theta)}{n}\\</a>
+<a class="sourceLine" id="cb1-42" title="42">$$</a>
+<a class="sourceLine" id="cb1-43" title="43"></a>
+<a class="sourceLine" id="cb1-44" title="44"></a>
+<a class="sourceLine" id="cb1-45" title="45"><span class="fu">## 實驗結果</span></a>
+<a class="sourceLine" id="cb1-46" title="46"></a>
+<a class="sourceLine" id="cb1-47" title="47">您可以用圖表展現實驗結果 ....</a>
+<a class="sourceLine" id="cb1-48" title="48"></a>
+<a class="sourceLine" id="cb1-49" title="49">![](img/curve.png)</a>
+<a class="sourceLine" id="cb1-50" title="50"></a>
+<a class="sourceLine" id="cb1-51" title="51"></a>
+<a class="sourceLine" id="cb1-52" title="52">也可以用表格進行分析</a>
+<a class="sourceLine" id="cb1-53" title="53"></a>
+<a class="sourceLine" id="cb1-54" title="54">實驗     | 正確率         | 說明</a>
+<a class="sourceLine" id="cb1-55" title="55">---------|--------------|------------------</a>
+<a class="sourceLine" id="cb1-56" title="56">方法 1   | 82.34%        | 用 xxx 資料測試</a>
+<a class="sourceLine" id="cb1-57" title="57">方法 2   | 85.51%        | 用 ooo 資料測試</a>
+<a class="sourceLine" id="cb1-58" title="58">方法 3   | 94.33%        | 用 xxx 資料測試</a>
+<a class="sourceLine" id="cb1-59" title="59"></a>
+<a class="sourceLine" id="cb1-60" title="60"></a>
+<a class="sourceLine" id="cb1-61" title="61"><span class="fu">## 結語</span></a>
+<a class="sourceLine" id="cb1-62" title="62"></a>
+<a class="sourceLine" id="cb1-63" title="63">說明你的方法之優點與限制，還有甚麼需要改進的未來展望等等 ...</a>
+<a class="sourceLine" id="cb1-64" title="64"></a>
+<a class="sourceLine" id="cb1-65" title="65"><span class="fu">## 參考文獻</span></a></code></pre></div>
+<p>另外、 pandoc 還支援了一個稱為 pandoc-citeproc 的文獻引用功能 <span class="citation" data-cites="pandocCiteProc">[7]</span> ，可以讓我們用 bibtex 儲存文獻，只要在 markdown 論文裏用 <code>@引用標記</code> (例如上文中的 <code>@kour2014fast, @hadash2018estimat</code> 等等) ， pandoc 就會自動將這些文獻用標準格式放到最後面，這樣就可以支援《完整的論文撰寫語法》了。</p>
+<p>下圖是上述《論文樣版》經 pandoc 轉換後以 HTML 和 PDF 兩種模式呈現在瀏覽器中的樣子，我們設計的樣板盡可能採用統一的學術風格呈現方式，但是讓 HTML 可以適應較小的手機畫面呈現方式。</p>
+<p><img src="./img/mdExampleHtml.png" /></p>
+<h1 id="結語">結語</h1>
+<p>雖然 pandoc 的功能已經設計得很好，格式也支援的很廣，但是我們在使用 pandoc 來創建論文撰寫工具的過程當中，還是碰到了一些障礙，其中有一些已經克服了，但是還有一些仍待克服，像是《HTML 中的數學公式與圖片無法在最右邊標號》等等的小瑕疵，仍然令人感覺不夠滿意。</p>
+<p>不過這些瑕疵都可以用某些方式彌補，例如改在上方或下方標號等等，但這些是技術不足問題，只要逐步的改進，應該是可以克服的。</p>
+<p>我們希望能透過《引入 github + markdown 到學術論文的撰寫、投稿、與期刊出版經營領域》，為學術界注入更多的活力，讓除了論文以外的資訊，也能被《論文撰寫者》與《期刊出版者》保存下來。</p>
+<p>我們希望這樣的期刊出版方式，能夠被學術界所接受，讓知識能更完整的保存下來，也讓研究能更容易被驗證與比較，這或許能讓學術的進展更快速！</p>
+<h1 id="參考文獻" class="unnumbered">參考文獻</h1>
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-wiki:tex">
+<p>[1] 维基百科, “TeX — 维基百科, 自由的百科全书.” 2019 [Online]. Available: <a href="https://zh.wikipedia.org/w/index.php?title=TeX&amp;oldid=54293748">https://zh.wikipedia.org/w/index.php?title=TeX&amp;oldid=54293748</a></p>
+</div>
+<div id="ref-wiki:markdown">
+<p>[2] 维基百科, “Markdown — 维基百科, 自由的百科全书.” 2019 [Online]. Available: <a href="https://zh.wikipedia.org/w/index.php?title=Markdown&amp;oldid=54553433">https://zh.wikipedia.org/w/index.php?title=Markdown&amp;oldid=54553433</a></p>
+</div>
+<div id="ref-wiki:pandoc">
+<p>[3] 维基百科, “Pandoc — 维基百科, 自由的百科全书.” 2017 [Online]. Available: <a href="https://zh.wikipedia.org/w/index.php?title=Pandoc&amp;oldid=46430325">https://zh.wikipedia.org/w/index.php?title=Pandoc&amp;oldid=46430325</a></p>
+</div>
+<div id="ref-commonmark">
+<p>[4] J. MacFarlane, “CommonMark spec,” 2019 [Online]. Available: <a href="https://spec.commonmark.org/">https://spec.commonmark.org/</a></p>
+</div>
+<div id="ref-pandocManual">
+<p>[5] J. MacFarlane, “Pandoc user’s guide.” 2019 [Online]. Available: <a href="https://pandoc.org/MANUAL.html">https://pandoc.org/MANUAL.html</a></p>
+</div>
+<div id="ref-GFM">
+<p>[6] github.com, “GitHub flavored markdown spec,” 2019 [Online]. Available: <a href="https://github.github.com/gfm/">https://github.github.com/gfm/</a></p>
+</div>
+<div id="ref-pandocCiteProc">
+<p>[7] J. MacFarlane, “Pandoc-citeproc.” 2019 [Online]. Available: <a href="https://github.com/jgm/pandoc-citeproc/blob/master/man/pandoc-citeproc.1.md">https://github.com/jgm/pandoc-citeproc/blob/master/man/pandoc-citeproc.1.md</a></p>
+</div>
+</div>
+
+<footer>
+License : <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a>
+</footer>
+</body>
+</html>

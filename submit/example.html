@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>一種基於 xxx 的模擬改良方法</title>
+  <title>title</title>
   <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,9 +18,20 @@
   <link rel="stylesheet" type="text/css" href="../template/template.css">
 </head>
 <body>
-<div class="journal"><label>Git 開源期刊 / 第 n 卷 / 第 m 期</label><label style="float:right">專案網址：<a href="https://github.com/ccckmit/xxx.git">https://github.com/ccckmit/xxx.git</a></a></label></div>
+
+
+<div class="journal">
+  <label>
+          <a href="../journal/">開源科學期刊</a> / 
+              <a href="../journal/2019">2019</a> / 
+      <a href="../journal/2019/9">9</a>
+      </label>
+</div>
+
 <header id="title-block-header">
 <h1 class="title">一種基於 xxx 的模擬改良方法</h1>
+
+
 <div class="author">
     <div>
     <p>陳鍾誠</p>
@@ -35,29 +46,30 @@
   </div>
 <p class="date">June/05/2019</p>
 <div class="abstract">
-  <h3 class="center">摘要</h3>
+  <h3 class="center">Abstract</h3>
   <p>簡短介紹這篇論文的主要貢獻與使用方法等等，例如：本文提出一種基於 xxx 的方法，可以在 ooo 的條件下進行 xxx 的模擬 …..</p>
 </div>
-<p class="keyword"><em>關鍵字:</em> &nbsp;
-   xxx ,  ooo , 
-</p>
 </header>
+
 <h1 id="簡介">簡介</h1>
 <p>在此描述您的作品或研究動機、背景 …</p>
+<p>第三段我們將介紹研究方法 sec. 3 ，</p>
 <h1 id="文獻回顧">文獻回顧</h1>
-<p>介紹一下目前其他人的研究成果並具體舉出文獻，例如 <span class="citation" data-cites="kour2014fast">Kour and Saabne (2014)</span>, <span class="citation" data-cites="hadash2018estimate">Hadash et al. (2018)</span> 等等， ….</p>
+<p>介紹一下目前其他人的研究成果，並且引用某些文獻 <span class="citation" data-cites="kour2014fast">1</span>, <span class="citation" data-cites="hadash2018estimate">2</span> 等等， ….</p>
 <p>接著介紹你的方法有何優勢等等 …</p>
-<h1 id="研究方法">研究方法</h1>
-<p>描述您的方法或技術，您也可以使用數學式將您的方法更清楚地描述出來！</p>
-<p><span class="math display">\[
-L(X;\theta)=P(X|\theta)=\sum_z P(X,z|\theta) \\
-\arg\max_{\theta_{t+1}} \frac{\sum_i P(x_i|\theta)}{n}\\
-\]</span></p>
+<h1 id="sec:secMethod">研究方法</h1>
+<p>描述您的方法或技術，您也可以使用數學式 (see eq. 1, eq. 2) 將您的方法更清楚地描述出來！</p>
+<p><span id="eq:eqn1"><span class="math display">\[L(X;\theta)=P(X|\theta)=\sum_z P(X,z|\theta)\qquad(1)\]</span></span></p>
+<p><span id="eq:eqn2"><span class="math display">\[\arg\max_{\theta_{t+1}} \frac{\sum_i P(x_i|\theta)}{n}\qquad(2)\]</span></span></p>
 <h1 id="實驗結果">實驗結果</h1>
-<p>您可以用圖表展現實驗結果 ….</p>
-<p><img src="img/curve.png" /></p>
-<p>也可以用表格進行分析</p>
+<p>您可以用圖表展現實驗結果，像是 fig. 1 ….</p>
+<figure>
+<img src="img/curve.png" alt="Figure 1: 實驗曲線" id="fig:figure1" /><figcaption>Figure 1: 實驗曲線</figcaption>
+</figure>
+<p>也可以用表格進行分析，像是 tbl. 1 …</p>
+<div id="tbl:table1">
 <table>
+<caption>Table 1: Table example</caption>
 <thead>
 <tr class="header">
 <th>實驗</th>
@@ -83,16 +95,21 @@ L(X;\theta)=P(X|\theta)=\sum_z P(X,z|\theta) \\
 </tr>
 </tbody>
 </table>
+</div>
 <h1 id="結語">結語</h1>
 <p>說明你的方法之優點與限制，還有甚麼需要改進的未來展望等等 …</p>
 <h1 id="參考文獻" class="unnumbered">參考文獻</h1>
 <div id="refs" class="references" role="doc-bibliography">
-<div id="ref-hadash2018estimate">
-<p>Hadash, Guy, Einat Kermany, Boaz Carmeli, Ofer Lavi, George Kour, and Alon Jacovi. 2018. “Estimate and Replace: A Novel Approach to Integrating Deep Neural Networks with Existing Applications.” <em>arXiv Preprint arXiv:1804.09028</em>.</p>
-</div>
 <div id="ref-kour2014fast">
-<p>Kour, George, and Raid Saabne. 2014. “Fast Classification of Handwritten on-Line Arabic Characters.” In <em>Soft Computing and Pattern Recognition (Socpar), 2014 6th International Conference of</em>, 312–18. IEEE.</p>
+<p>[1] G. Kour and R. Saabne, “Fast classification of handwritten on-line arabic characters,” in <em>Soft computing and pattern recognition (socpar), 2014 6th international conference of</em>, 2014, pp. 312–318. </p>
+</div>
+<div id="ref-hadash2018estimate">
+<p>[2] G. Hadash, E. Kermany, B. Carmeli, O. Lavi, G. Kour, and A. Jacovi, “Estimate and replace: A novel approach to integrating deep neural networks with existing applications,” <em>arXiv preprint arXiv:1804.09028</em>, 2018. </p>
 </div>
 </div>
+
+<footer>
+License : <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a>
+</footer>
 </body>
 </html>
